@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CM7 Centrum Medyczne SevenCare | Rawa Mazowiecka</title>
+<meta name="description" content="CM7 Centrum Medyczne SevenCare — przychodnia specjalistyczna w Rawie Mazowieckiej. Internista, diabetolog, endokrynolog, chirurg. Tel: 787 926 156">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* === BRAND COLORS from logo === */
+:root {
+  --navy:     #1a3a6b;   /* CM granat */
+  --navy-2:   #122d56;
+  --navy-lt:  #e8eef8;
+  --teal:     #2a7a6e;   /* SevenCare ciemny teal */
+  --teal-2:   #1f6059;
+  --teal-lt:  #e0f2ef;
+  --green:    #4aaa5a;   /* liść/7 zielony */
+  --green-lt: #d8f0dc;
+  --bg:       #f5f9f8;
+  --bg-2:     #eaf4f2;
+  --bg-3:     #ffffff;
+  --sand:     #e8f0f5;
+  --sand-2:   #d0e4f0;
+  --text:     #0f2440;
+  --text-2:   #3a5a70;
+  --text-3:   #7a9aaa;
+  --white:    #ffffff;
+  --radius:   12px;
+  --radius-lg: 20px;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+/* === NAV === */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.7rem 2.5rem;
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--sand-2);
+  box-shadow: 0 1px 12px rgba(26,58,107,0.06);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 48px; width: auto; object-fit: contain; }
+.nav-links { display: flex; gap: 1.8rem; align-items: center; }
+.nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--teal); }
+.nav-social { display: flex; gap: 0.4rem; align-items: center; }
+.soc-btn { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
+.soc-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.soc-btn.fb { background: #1877f2; }
+.soc-btn.ig { background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%); }
+.soc-btn svg { width: 15px; height: 15px; fill: white; }
+.nav-cta { padding: 0.55rem 1.3rem; background: var(--teal); color: var(--white) !important; border-radius: 100px; font-weight: 500; font-size: 0.82rem; white-space: nowrap; transition: background 0.2s, transform 0.2s !important; }
+.nav-cta:hover { background: var(--teal-2) !important; transform: translateY(-1px); }
+
+/* === HERO === */
+#hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 7rem 2.5rem 5rem;
+  gap: 3rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%;
+  opacity: 0.08;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, rgba(245,249,248,0.98) 40%, rgba(245,249,248,0.75) 100%);
+}
+.hero-blob {
+  position: absolute; top: -15%; right: -8%; z-index: 0;
+  width: 52vw; height: 52vw; max-width: 680px; max-height: 680px;
+  background: radial-gradient(ellipse, rgba(42,122,110,0.1) 0%, transparent 70%);
+  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+  pointer-events: none;
+}
+.hero-blob-2 {
+  position: absolute; bottom: -8%; left: -5%; z-index: 0;
+  width: 28vw; height: 28vw; max-width: 380px; max-height: 380px;
+  background: radial-gradient(ellipse, rgba(74,170,90,0.12) 0%, transparent 70%);
+  border-radius: 40% 60% 55% 45%;
+  pointer-events: none;
+}
+.hero-left { position: relative; z-index: 1; }
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--white); border: 1px solid var(--sand-2);
+  border-radius: 100px; padding: 0.38rem 1rem;
+  font-size: 0.74rem; color: var(--text-2); margin-bottom: 1.5rem;
+}
+.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+.hero-left h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+  font-weight: 400; line-height: 1.18;
+  color: var(--navy); margin-bottom: 1.1rem;
+}
+.hero-left h1 em { color: var(--teal); font-style: italic; }
+.hero-left p { font-size: 1rem; color: var(--text-2); max-width: 420px; margin-bottom: 2rem; line-height: 1.8; }
+.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn-primary { padding: 0.85rem 2rem; background: var(--teal); color: var(--white); border: none; border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
+.btn-primary:hover { background: var(--teal-2); transform: translateY(-2px); }
+.btn-ghost { padding: 0.85rem 2rem; background: transparent; color: var(--navy); border: 1.5px solid var(--sand-2); border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 400; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
+.btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+.hero-banner-img {
+  margin-top: 1rem;
+  border-radius: var(--radius); overflow: hidden;
+  max-width: 440px; border: 1px solid var(--sand-2);
+  box-shadow: 0 4px 20px rgba(26,58,107,0.1);
+}
+.hero-banner-img img { width: 100%; display: block; }
+.hero-right { position: relative; z-index: 1; }
+.hero-card {
+  background: var(--white); border: 1px solid var(--sand-2);
+  border-radius: var(--radius-lg); padding: 1.8rem;
+  box-shadow: 0 4px 32px rgba(26,58,107,0.08);
+}
+.hero-card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 1.2rem; }
+.qi-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.9rem; }
+.qi-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--teal-lt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.qi-icon svg { width: 15px; height: 15px; stroke: var(--teal); fill: none; stroke-width: 2; }
+.qi-text { font-size: 0.82rem; color: var(--text-2); line-height: 1.5; }
+.qi-text strong { color: var(--navy); font-weight: 500; display: block; font-size: 0.86rem; }
+.trust-row { display: flex; align-items: center; gap: 0.8rem; padding: 1rem; background: var(--navy-lt); border-radius: var(--radius); margin-top: 1rem; }
+.trust-icon { width: 34px; height: 34px; background: rgba(26,58,107,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.trust-icon svg { width: 15px; height: 15px; stroke: var(--navy); fill: none; stroke-width: 2; }
+.trust-text { font-size: 0.78rem; color: var(--text-2); line-height: 1.4; }
+.trust-text strong { color: var(--navy); font-weight: 500; display: block; }
+
+/* === SECTION BASE === */
+section { padding: 5rem 2.5rem; }
+.section-tag { display: inline-flex; align-items: center; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--teal); background: var(--teal-lt); padding: 4px 12px; border-radius: 100px; margin-bottom: 0.8rem; }
+.section-title { font-family: 'Lora', serif; font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.25; color: var(--navy); margin-bottom: 0.8rem; }
+.section-sub { color: var(--text-2); font-size: 0.93rem; max-width: 480px; }
+
+/* === SPEC === */
+#specjalizacje { background: var(--white); }
+.spec-photo-strip {
+  width: 100%; height: 260px; border-radius: var(--radius-lg);
+  overflow: hidden; margin-bottom: 3rem; position: relative;
+}
+.spec-photo-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.spec-photo-strip::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(26,58,107,0.7) 0%, rgba(26,58,107,0.2) 60%, transparent 100%);
+}
+.strip-text { position: absolute; left: 2.5rem; top: 50%; transform: translateY(-50%); z-index: 1; color: white; }
+.strip-text h2 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 400; line-height: 1.2; }
+.strip-text p { font-size: 0.85rem; opacity: 0.8; margin-top: 0.35rem; }
+.spec-header { margin-bottom: 2rem; }
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.spec-card {
+  background: var(--bg); border: 1px solid var(--sand-2);
+  border-radius: var(--radius-lg); padding: 2rem 1.6rem;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+}
+.spec-card:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(26,58,107,0.1); border-color: rgba(42,122,110,0.3); }
+.spec-dot {
+  width: 46px; height: 46px; border-radius: 13px;
+  background: var(--teal-lt); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;
+}
+.spec-dot svg { width: 20px; height: 20px; stroke: var(--teal); fill: none; stroke-width: 1.8; }
+.spec-card h3 { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 400; color: var(--navy); margin-bottom: 0.5rem; }
+.spec-card p { font-size: 0.82rem; color: var(--text-2); line-height: 1.7; }
+.spec-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.spec-tag { font-size: 0.68rem; background: var(--navy-lt); color: var(--navy); padding: 3px 10px; border-radius: 100px; font-weight: 400; }
+
+/* === O NAS === */
+#o-nas { background: var(--bg-2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-img { border-radius: var(--radius-lg); aspect-ratio: 4/5; position: relative; overflow: hidden; box-shadow: 0 8px 40px rgba(26,58,107,0.12); }
+.about-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.about-badge {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: var(--white); border-radius: var(--radius);
+  padding: 1rem 1.4rem; box-shadow: 0 4px 16px rgba(26,58,107,0.12);
+}
+.about-badge-n { font-family: 'Lora', serif; font-size: 2rem; color: var(--teal); line-height: 1; }
+.about-badge-l { font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+.about-text p { color: var(--text-2); font-size: 0.94rem; line-height: 1.85; margin: 1.4rem 0 1.8rem; }
+.about-values { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+.value-row { display: flex; align-items: flex-start; gap: 0.9rem; background: var(--white); padding: 0.9rem 1.1rem; border-radius: var(--radius); border: 1px solid var(--sand-2); }
+.value-check { width: 22px; height: 22px; border-radius: 50%; background: var(--teal-lt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.value-check svg { width: 11px; height: 11px; stroke: var(--teal); fill: none; stroke-width: 2.5; }
+.value-row p { font-size: 0.83rem; color: var(--text-2); }
+.value-row strong { color: var(--navy); font-weight: 500; display: block; font-size: 0.86rem; }
+
+/* === REZERWACJA === */
+#rezerwacja { background: var(--bg); }
+.booking-center { max-width: 620px; margin: 0 auto; text-align: center; }
+.booking-center .section-tag { display: table; margin: 0 auto 0.8rem; }
+.booking-center .section-sub { margin: 0 auto; }
+.booking-card { background: var(--white); border: 1px solid var(--sand-2); border-radius: var(--radius-lg); overflow: hidden; margin-top: 2.5rem; box-shadow: 0 4px 24px rgba(26,58,107,0.07); }
+.booking-top { background: var(--navy); padding: 1.6rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+.booking-top h3 { font-family: 'Lora', serif; font-size: 1.25rem; font-weight: 400; color: var(--white); }
+.booking-soon { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; }
+.booking-body { padding: 2rem; }
+.booking-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.8rem; }
+.b-step { text-align: center; background: var(--bg); border-radius: var(--radius); padding: 1.1rem 0.8rem; border: 1px solid var(--sand-2); }
+.b-step-n { font-family: 'Lora', serif; font-size: 1.5rem; color: var(--teal); line-height: 1; }
+.b-step-l { font-size: 0.7rem; color: var(--text-3); margin-top: 0.4rem; line-height: 1.4; }
+.booking-note { font-size: 0.84rem; color: var(--text-2); margin-bottom: 1.1rem; }
+.booking-form { display: flex; gap: 0.7rem; }
+.booking-form input { flex: 1; padding: 0.72rem 1rem; background: var(--bg); border: 1.5px solid var(--sand-2); border-radius: 100px; color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.84rem; outline: none; transition: border-color 0.2s; }
+.booking-form input:focus { border-color: var(--teal); }
+.booking-form input::placeholder { color: var(--text-3); }
+.booking-form button { padding: 0.72rem 1.4rem; background: var(--teal); color: var(--white); border: none; border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+.booking-form button:hover { background: var(--teal-2); }
+.booking-tel { margin-top: 1rem; font-size: 0.8rem; color: var(--text-3); }
+.booking-tel a { color: var(--navy); text-decoration: none; font-weight: 600; font-size: 1rem; }
+
+/* === KONTAKT === */
+#kontakt { background: var(--white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.hours-wrap h3 { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400; color: var(--navy); margin-bottom: 1.2rem; }
+.open-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.74rem; font-weight: 500; padding: 4px 12px; border-radius: 100px; margin-bottom: 1.2rem; }
+.open-badge.open { background: var(--teal-lt); color: var(--teal-2); }
+.open-badge.closed { background: var(--navy-lt); color: var(--navy); }
+.open-dot { width: 6px; height: 6px; border-radius: 50%; }
+.open-badge.open .open-dot { background: var(--teal); animation: pulse 2s infinite; }
+.open-badge.closed .open-dot { background: var(--text-3); }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.hours-table { width: 100%; border-collapse: collapse; }
+.hours-table tr { border-bottom: 1px solid var(--bg-2); }
+.hours-table tr:last-child { border-bottom: none; }
+.hours-table td { padding: 0.68rem 0; font-size: 0.87rem; }
+.day { color: var(--text-2); }
+.time-td { text-align: right; font-weight: 500; color: var(--navy); }
+.closed-td { text-align: right; color: var(--text-3); }
+.address-card { margin-top: 1.5rem; background: var(--bg); border: 1px solid var(--sand-2); border-radius: var(--radius); padding: 1.2rem 1.4rem; }
+.address-card p { font-size: 0.84rem; color: var(--text-2); line-height: 2.1; }
+.address-card a { color: var(--teal); text-decoration: none; }
+.phone-big { color: var(--navy) !important; font-size: 1.1rem; font-weight: 600; }
+.map-box {
+  background: var(--bg); border: 1px solid var(--sand-2);
+  border-radius: var(--radius-lg); aspect-ratio: 4/3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0.8rem;
+}
+.map-box svg { width: 32px; height: 32px; stroke: var(--teal); fill: none; stroke-width: 1.5; }
+.map-box p { font-size: 0.83rem; color: var(--text-2); text-align: center; line-height: 1.6; }
+.map-box a { font-size: 0.78rem; color: var(--teal); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(42,122,110,0.3); padding-bottom: 1px; }
+
+/* === SOCIAL STRIP === */
+.social-strip {
+  background: var(--navy); padding: 2.5rem 2.5rem;
+  text-align: center;
+}
+.social-strip p { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+.social-strip-btns { display: flex; gap: 1rem; justify-content: center; }
+.social-big-btn {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.75rem 1.6rem; border-radius: 100px;
+  text-decoration: none; color: white; font-size: 0.84rem; font-weight: 500;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.social-big-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.social-big-btn.fb { background: #1877f2; }
+.social-big-btn.ig { background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%); }
+.social-big-btn svg { width: 17px; height: 17px; fill: white; }
+
+/* === FOOTER === */
+footer {
+  background: var(--navy-2); color: rgba(255,255,255,0.45);
+  padding: 2rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo img { height: 36px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.8; }
+footer p { font-size: 0.76rem; }
+footer nav { display: flex; gap: 1.5rem; }
+footer nav a { font-size: 0.73rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+footer nav a:hover { color: white; }
+
+/* === RESPONSIVE === */
+@media (max-width: 960px) {
+  .spec-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  #hero { grid-template-columns: 1fr; padding: 6.5rem 1.5rem 3rem; }
+  .hero-right { display: none; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-img { aspect-ratio: 16/9; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0.7rem 1.2rem; }
+  .nav-links { gap: 0; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  section { padding: 3.5rem 1.2rem; }
+  .spec-photo-strip { height: 180px; }
+  .strip-text h2 { font-size: 1.4rem; }
+  .booking-steps { grid-template-columns: 1fr; }
+  .booking-form { flex-direction: column; }
+  footer { flex-direction: column; text-align: center; padding: 1.5rem 1.2rem; }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+.hero-left > * { animation: fadeUp 0.6s ease both; }
+.hero-pill { animation-delay: 0.05s; }
+.hero-left h1 { animation-delay: 0.15s; }
+.hero-left p { animation-delay: 0.27s; }
+.hero-actions { animation-delay: 0.38s; }
+.hero-banner-img { animation-delay: 0.48s; }
+.hero-right { animation: fadeUp 0.6s 0.45s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.jpg" alt="CM7 SevenCare">
+  </a>
+  <div class="nav-links">
+    <a href="#specjalizacje">Specjalizacje</a>
+    <a href="#o-nas">O nas</a>
+    <a href="#kontakt">Kontakt</a>
+    <div class="nav-social">
+      <a href="https://www.facebook.com/CM7SevenCare" target="_blank" rel="noopener" class="soc-btn fb" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/cm7sevencare" target="_blank" rel="noopener" class="soc-btn ig" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </div>
+    <a href="tel:787926156" class="nav-cta">Zadzwoń</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1600&auto=format&fit=crop&q=80" alt="" aria-hidden="true" loading="eager">
+  </div>
+  <div class="hero-blob"></div>
+  <div class="hero-blob-2"></div>
+
+  <div class="hero-left">
+    <div class="hero-pill"><span class="hero-pill-dot"></span>CM7 Centrum Medyczne · Rawa Mazowiecka</div>
+    <h1>Zdrowie,<br>które jest <em>bliżej</em><br>niż myślisz</h1>
+    <p>SevenCare to przychodnia specjalistyczna w centrum Rawy Mazowieckiej. Internista, diabetolog, endokrynolog i chirurg — bez kolejek, bez skierowania.</p>
+    <div class="hero-actions">
+      <a href="tel:787926156" class="btn-primary">Zadzwoń: 787 926 156</a>
+      <a href="#specjalizacje" class="btn-ghost">Nasze specjalizacje</a>
+    </div>
+    <div class="hero-banner-img">
+      <img src="banner.jpg" alt="CM7 Centrum Medyczne SevenCare Rawa Mazowiecka">
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-label">Informacje o przychodni</div>
+      <div class="qi-row">
+        <div class="qi-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="qi-text"><strong>Adres</strong>ul. Mszczonowska 3, 96-200 Rawa Mazowiecka</div>
+      </div>
+      <div class="qi-row">
+        <div class="qi-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="qi-text"><strong>Rejestracja</strong><a href="tel:787926156" style="color:var(--navy);font-weight:600;font-size:1rem;text-decoration:none;">787 926 156</a></div>
+      </div>
+      <div class="qi-row">
+        <div class="qi-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="qi-text"><strong>Godziny przyjęć</strong>Wt: 14:00–16:30 · Czw: 09:30–20:00 · Pt: 08:00–12:30</div>
+      </div>
+      <div class="trust-row">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="trust-text"><strong>Prywatna opieka specjalistyczna</strong>Bez skierowania i bez długich kolejek NFZ.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECJALIZACJE -->
+<section id="specjalizacje">
+  <div class="spec-photo-strip">
+    <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1400&auto=format&fit=crop&q=80" alt="Specjaliści CM7 SevenCare" loading="lazy">
+    <div class="strip-text">
+      <h2>Nasi specjaliści</h2>
+      <p>Trzy kluczowe dziedziny medycyny w Rawie Mazowieckiej</p>
+    </div>
+  </div>
+  <div class="spec-header">
+    <div class="section-tag">Specjalizacje</div>
+    <p class="section-sub" style="margin-top:0.5rem;">Kompleksowa opieka bez skierowania — umów wizytę telefonicznie pod nr <strong style="color:var(--navy);">787 926 156</strong>.</p>
+  </div>
+  <div class="spec-grid">
+
+    <div class="spec-card">
+      <div class="spec-dot"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <h3>Internista / Diabetolog</h3>
+      <p>Kompleksowa opieka w zakresie chorób wewnętrznych. Diagnostyka i leczenie cukrzycy typu 1 i 2, insulinooporności oraz powikłań metabolicznych. E-recepty i e-zwolnienia.</p>
+      <div class="spec-tags">
+        <span class="spec-tag">Cukrzyca</span>
+        <span class="spec-tag">Insulinooporność</span>
+        <span class="spec-tag">Nadciśnienie</span>
+        <span class="spec-tag">E-recepty</span>
+      </div>
+    </div>
+
+    <div class="spec-card">
+      <div class="spec-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+      <h3>Endokrynolog</h3>
+      <p>Diagnostyka i leczenie zaburzeń hormonalnych. Choroby tarczycy, przytarczyc, nadnerczy i przysadki. USG tarczycy, pełna diagnostyka laboratoryjna.</p>
+      <div class="spec-tags">
+        <span class="spec-tag">Tarczyca</span>
+        <span class="spec-tag">Hashimoto</span>
+        <span class="spec-tag">Hormony</span>
+        <span class="spec-tag">USG tarczycy</span>
+      </div>
+    </div>
+
+    <div class="spec-card">
+      <div class="spec-dot"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Chirurg</h3>
+      <p>Konsultacje i zabiegi chirurgiczne. Ocena zmian skórnych, znamion, tłuszczaków. Opieka pooperacyjna, leczenie ran, kwalifikacja do zabiegów planowych.</p>
+      <div class="spec-tags">
+        <span class="spec-tag">Zabiegi ambulatoryjne</span>
+        <span class="spec-tag">Znamiona</span>
+        <span class="spec-tag">Opieka pooperacyjna</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- O NAS -->
+<section id="o-nas">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&auto=format&fit=crop&q=80" alt="Lekarz CM7 SevenCare" loading="lazy">
+      <div class="about-badge">
+        <div class="about-badge-n">3</div>
+        <div class="about-badge-l">specjalizacje</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">O nas</div>
+      <h2 class="section-title">CM7 Centrum Medyczne<br><em style="font-style:italic;color:var(--teal);">SevenCare</em></h2>
+      <p>Prywatna przychodnia specjalistyczna w centrum Rawy Mazowieckiej, tworzona z myślą o pacjentach ceniących czas i komfort. Nasi lekarze łączą wieloletnie doświadczenie z empatycznym podejściem do każdej osoby.</p>
+      <div class="about-values">
+        <div class="value-row">
+          <div class="value-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Lokalizacja w centrum Rawy Mazowieckiej</strong>ul. Mszczonowska 3 — łatwy dojazd, blisko centrum.</p>
+        </div>
+        <div class="value-row">
+          <div class="value-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Krótkie terminy oczekiwania</strong>Rejestracja telefoniczna — szybko i bez zbędnych formalności.</p>
+        </div>
+        <div class="value-row">
+          <div class="value-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p><strong>Wizyty bez skierowania</strong>Pełna prywatna opieka specjalistyczna — bez kolejek NFZ.</p>
+        </div>
+      </div>
+      <a href="tel:787926156" class="btn-primary">Zadzwoń i umów wizytę</a>
+    </div>
+  </div>
+</section>
+
+<!-- REZERWACJA -->
+<section id="rezerwacja">
+  <div class="booking-center">
+    <div class="section-tag">Rezerwacja online</div>
+    <h2 class="section-title" style="text-align:center;">Umów wizytę online</h2>
+    <p class="section-sub">System rezerwacji online już wkrótce. Zostaw e-mail — powiadomimy Cię przy uruchomieniu.</p>
+    <div class="booking-card">
+      <div class="booking-top">
+        <h3>Rezerwacja online</h3>
+        <span class="booking-soon">Wkrótce</span>
+      </div>
+      <div class="booking-body">
+        <div class="booking-steps">
+          <div class="b-step"><div class="b-step-n">01</div><div class="b-step-l">Wybierz specjalistę</div></div>
+          <div class="b-step"><div class="b-step-n">02</div><div class="b-step-l">Wybierz wolny termin</div></div>
+          <div class="b-step"><div class="b-step-n">03</div><div class="b-step-l">Potwierdź wizytę</div></div>
+        </div>
+        <p class="booking-note">Zostaw e-mail — powiadomimy Cię, gdy rezerwacja online ruszy.</p>
+        <div class="booking-form">
+          <input type="email" placeholder="Twój adres e-mail">
+          <button onclick="handleNotify(this)">Powiadom mnie</button>
+        </div>
+        <p class="booking-tel">Rejestracja już teraz pod nr: <a href="tel:787926156">+48 787 926 156</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div style="margin-bottom:3rem;">
+    <div class="section-tag">Znajdź nas</div>
+    <h2 class="section-title">Godziny i lokalizacja</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="hours-wrap">
+      <h3>Godziny otwarcia</h3>
+      <div class="open-badge" id="open-badge"><span class="open-dot" id="open-dot"></span><span id="open-label">Sprawdzanie…</span></div>
+      <table class="hours-table">
+        <tr><td class="day">Poniedziałek</td><td class="closed-td">Zamknięte</td></tr>
+        <tr><td class="day">Wtorek</td><td class="time-td">14:00 – 16:30</td></tr>
+        <tr><td class="day">Środa</td><td class="closed-td">Zamknięte</td></tr>
+        <tr><td class="day">Czwartek</td><td class="time-td">09:30 – 20:00</td></tr>
+        <tr><td class="day">Piątek</td><td class="time-td">08:00 – 12:30</td></tr>
+        <tr><td class="day">Sobota</td><td class="closed-td">Zamknięte</td></tr>
+        <tr><td class="day">Niedziela</td><td class="closed-td">Zamknięte</td></tr>
+      </table>
+      <div class="address-card">
+        <p>
+          <strong style="color:var(--navy);font-size:0.9rem;">CM7 Centrum Medyczne SevenCare</strong><br>
+          ul. Mszczonowska 3<br>96-200 Rawa Mazowiecka<br>
+          <a href="tel:787926156" class="phone-big">+48 787 926 156</a><br>
+          <a href="https://www.facebook.com/CM7SevenCare" target="_blank">facebook.com/CM7SevenCare</a>
+        </p>
+      </div>
+    </div>
+    <div>
+      <!-- Zamień div.map-box na iframe gdy masz embed link z Google Maps:
+      <iframe src="https://maps.google.com/maps?q=Mszczonowska+3+Rawa+Mazowiecka&output=embed"
+        width="100%" style="aspect-ratio:4/3;border:0;border-radius:20px;display:block;" loading="lazy"></iframe>
+      -->
+      <div class="map-box">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p>ul. Mszczonowska 3<br>96-200 Rawa Mazowiecka</p>
+        <a href="https://maps.google.com/?q=Mszczonowska+3,+96-200+Rawa+Mazowiecka" target="_blank">Otwórz w Google Maps →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STRIP -->
+<div class="social-strip">
+  <p>Obserwuj nas w mediach społecznościowych</p>
+  <div class="social-strip-btns">
+    <a href="https://www.facebook.com/CM7SevenCare" target="_blank" rel="noopener" class="social-big-btn fb">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      Facebook
+    </a>
+    <a href="https://www.instagram.com/cm7sevencare" target="_blank" rel="noopener" class="social-big-btn ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagram
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="logo.jpg" alt="CM7 SevenCare"></div>
+  <p>© 2025 CM7 Centrum Medyczne SevenCare · ul. Mszczonowska 3, 96-200 Rawa Mazowiecka</p>
+  <nav>
+    <a href="#">Polityka prywatności</a>
+    <a href="#">RODO</a>
+  </nav>
+</footer>
+
+<script>
+function handleNotify(btn) {
+  const input = btn.previousElementSibling;
+  if (input.value && input.value.includes('@')) {
+    btn.textContent = 'Zapisano ✓';
+    btn.style.background = '#2a7a6e';
+    input.value = ''; input.disabled = true; btn.disabled = true;
+  } else {
+    input.style.borderColor = '#e05a3a';
+    setTimeout(() => input.style.borderColor = '', 1500);
+  }
+}
+
+const schedule = [
+  [2, 14, 0, 16, 30],
+  [4,  9,30, 20,  0],
+  [5,  8, 0, 12, 30],
+];
+const now = new Date();
+const d = now.getDay(), tot = now.getHours()*60 + now.getMinutes();
+const isOpen = schedule.some(([day,sh,sm,eh,em]) => d===day && tot>=sh*60+sm && tot<eh*60+em);
+const badge = document.getElementById('open-badge');
+const label = document.getElementById('open-label');
+if (isOpen) {
+  badge.className = 'open-badge open';
+  label.textContent = 'Teraz otwarte';
+} else {
+  badge.className = 'open-badge closed';
+  label.textContent = 'Aktualnie zamknięte';
+}
+</script>
+</body>
+</html>
