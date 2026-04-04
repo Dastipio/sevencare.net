@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CM7 Centrum Medyczne SevenCare | Rawa Mazowiecka</title>
-<meta name="description" content="CM7 Centrum Medyczne SevenCare — przychodnia specjalistyczna w Rawie Mazowieckiej. Internista, diabetolog, endokrynolog, chirurg. Tel: 787 926 156">
+<meta name="description" content="CM7 Centrum Medyczne SevenCare — przychodnia specjalistyczna w Rawie Mazowieckiej. Internista, diabetolog, gastrolog, chirurg, psycholog. Tel: 787 926 156">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -162,7 +162,7 @@ section { padding: 5rem 2.5rem; }
 .strip-text h2 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 400; line-height: 1.2; }
 .strip-text p { font-size: 0.85rem; opacity: 0.8; margin-top: 0.35rem; }
 .spec-header { margin-bottom: 2rem; }
-.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .spec-card {
   background: var(--bg); border: 1px solid var(--sand-2);
   border-radius: var(--radius-lg); padding: 2rem 1.6rem;
@@ -198,6 +198,18 @@ section { padding: 5rem 2.5rem; }
 .value-check svg { width: 11px; height: 11px; stroke: var(--teal); fill: none; stroke-width: 2.5; }
 .value-row p { font-size: 0.83rem; color: var(--text-2); }
 .value-row strong { color: var(--navy); font-weight: 500; display: block; font-size: 0.86rem; }
+
+/* === MYDR BUTTON === */
+.btn-mydr-pp {
+  padding: 0.9rem 2.5rem;
+  background: var(--teal); color: var(--white);
+  border: none; border-radius: 100px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 500;
+  cursor: pointer; transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.btn-mydr-pp:hover { background: var(--teal-2); transform: translateY(-2px); }
 
 /* === REZERWACJA === */
 #rezerwacja { background: var(--bg); }
@@ -288,7 +300,7 @@ footer nav a:hover { color: white; }
 
 /* === RESPONSIVE === */
 @media (max-width: 960px) {
-  .spec-grid { grid-template-columns: 1fr; }
+  .spec-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
   #hero { grid-template-columns: 1fr; padding: 6.5rem 1.5rem 3rem; }
@@ -320,6 +332,20 @@ footer nav a:hover { color: white; }
 </style>
 </head>
 <body>
+<script>
+    const mydrScript = document.getElementsByTagName('script')[0];
+    const js = document.createElement('script');
+    js.src = 'https://mydr.pl/static/mydr-pp.min.js';
+    mydrScript.parentNode.insertBefore(js, mydrScript);
+
+    js.onload = () => {
+        const PatientsPlugin = new window.PatientsPlugin();
+        PatientsPlugin.init({
+            app: 'https://mydr.pl/patients_plugin',
+            plugin: 'https://mydr.pl/static',
+        });
+    };
+</script>
 
 <!-- NAV -->
 <nav>
@@ -345,7 +371,7 @@ footer nav a:hover { color: white; }
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1600&auto=format&fit=crop&q=80" alt="" aria-hidden="true" loading="eager">
+    <img src="clinic.jpg" alt="" aria-hidden="true" loading="eager">
   </div>
   <div class="hero-blob"></div>
   <div class="hero-blob-2"></div>
@@ -353,7 +379,7 @@ footer nav a:hover { color: white; }
   <div class="hero-left">
     <div class="hero-pill"><span class="hero-pill-dot"></span>CM7 Centrum Medyczne · Rawa Mazowiecka</div>
     <h1>Zdrowie,<br>które jest <em>bliżej</em><br>niż myślisz</h1>
-    <p>SevenCare to przychodnia specjalistyczna w centrum Rawy Mazowieckiej. Internista, diabetolog, endokrynolog i chirurg — bez kolejek, bez skierowania.</p>
+    <p>SevenCare to przychodnia specjalistyczna w centrum Rawy Mazowieckiej. Internista, diabetolog, gastrolog, chirurg i psycholog — bez kolejek, bez skierowania.</p>
     <div class="hero-actions">
       <a href="tel:787926156" class="btn-primary">Zadzwoń: 787 926 156</a>
       <a href="#specjalizacje" class="btn-ghost">Nasze specjalizacje</a>
@@ -392,7 +418,7 @@ footer nav a:hover { color: white; }
     <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1400&auto=format&fit=crop&q=80" alt="Specjaliści CM7 SevenCare" loading="lazy">
     <div class="strip-text">
       <h2>Nasi specjaliści</h2>
-      <p>Trzy kluczowe dziedziny medycyny w Rawie Mazowieckiej</p>
+      <p>Cztery kluczowe dziedziny medycyny w Rawie Mazowieckiej</p>
     </div>
   </div>
   <div class="spec-header">
@@ -415,13 +441,25 @@ footer nav a:hover { color: white; }
 
     <div class="spec-card">
       <div class="spec-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
-      <h3>Endokrynolog</h3>
-      <p>Diagnostyka i leczenie zaburzeń hormonalnych. Choroby tarczycy, przytarczyc, nadnerczy i przysadki. USG tarczycy, pełna diagnostyka laboratoryjna.</p>
+      <h3>Gastrolog</h3>
+      <p>Diagnostyka i leczenie chorób układu pokarmowego. Refluks, choroby jelit, wrzody, choroby wątroby i trzustki. Konsultacje oraz zlecanie badań endoskopowych.</p>
       <div class="spec-tags">
-        <span class="spec-tag">Tarczyca</span>
-        <span class="spec-tag">Hashimoto</span>
-        <span class="spec-tag">Hormony</span>
-        <span class="spec-tag">USG tarczycy</span>
+        <span class="spec-tag">Refluks</span>
+        <span class="spec-tag">Choroby jelit</span>
+        <span class="spec-tag">Wrzody</span>
+        <span class="spec-tag">IBS</span>
+      </div>
+    </div>
+
+    <div class="spec-card">
+      <div class="spec-dot"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h3>Psycholog</h3>
+      <p>Wsparcie psychologiczne dla dorosłych. Terapia indywidualna, pomoc w stanach lękowych, depresji, wypaleniu zawodowym oraz trudnościach życiowych.</p>
+      <div class="spec-tags">
+        <span class="spec-tag">Terapia indywidualna</span>
+        <span class="spec-tag">Depresja</span>
+        <span class="spec-tag">Lęk</span>
+        <span class="spec-tag">Wypalenie zawodowe</span>
       </div>
     </div>
 
@@ -445,7 +483,7 @@ footer nav a:hover { color: white; }
     <div class="about-img">
       <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&auto=format&fit=crop&q=80" alt="Lekarz CM7 SevenCare" loading="lazy">
       <div class="about-badge">
-        <div class="about-badge-n">3</div>
+        <div class="about-badge-n">4</div>
         <div class="about-badge-l">specjalizacje</div>
       </div>
     </div>
@@ -477,11 +515,11 @@ footer nav a:hover { color: white; }
   <div class="booking-center">
     <div class="section-tag">Rezerwacja online</div>
     <h2 class="section-title" style="text-align:center;">Umów wizytę online</h2>
-    <p class="section-sub">System rezerwacji online już wkrótce. Zostaw e-mail — powiadomimy Cię przy uruchomieniu.</p>
+    <p class="section-sub">Zarezerwuj wizytę online 24/7 — szybko, wygodnie, bez dzwonienia.</p>
     <div class="booking-card">
       <div class="booking-top">
         <h3>Rezerwacja online</h3>
-        <span class="booking-soon">Wkrótce</span>
+        <span class="booking-soon" style="background:rgba(74,170,90,0.25);color:#a8f0b0;">Dostępna</span>
       </div>
       <div class="booking-body">
         <div class="booking-steps">
@@ -489,12 +527,18 @@ footer nav a:hover { color: white; }
           <div class="b-step"><div class="b-step-n">02</div><div class="b-step-l">Wybierz wolny termin</div></div>
           <div class="b-step"><div class="b-step-n">03</div><div class="b-step-l">Potwierdź wizytę</div></div>
         </div>
-        <p class="booking-note">Zostaw e-mail — powiadomimy Cię, gdy rezerwacja online ruszy.</p>
-        <div class="booking-form">
-          <input type="email" placeholder="Twój adres e-mail">
-          <button onclick="handleNotify(this)">Powiadom mnie</button>
+        <div style="text-align:center; margin: 1.5rem 0 1rem;">
+          <button
+            class="btn-mydr-pp"
+            data-doctor=""
+            data-speciality=""
+            data-visitkind=""
+            data-evisit="true"
+            data-appname="drw"
+            data-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmYWNpbGl0eV9pZCI6Mjg0MjN9.TH44urMhDzzZ20xP06S7EMRRzRgGOG90eX_4TqoV2dY"
+          >Umów wizytę online</button>
         </div>
-        <p class="booking-tel">Rejestracja już teraz pod nr: <a href="tel:787926156">+48 787 926 156</a></p>
+        <p class="booking-tel">Wolisz zadzwonić? <a href="tel:787926156">+48 787 926 156</a></p>
       </div>
     </div>
   </div>
