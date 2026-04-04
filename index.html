@@ -40,23 +40,39 @@ body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta San
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0.7rem 2.5rem;
-  background: rgba(255,255,255,0.96); backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--sand-2);
-  box-shadow: 0 1px 12px rgba(26,58,107,0.06);
+  padding: 1rem 2.5rem;
+  background: transparent;
+  transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+  background: rgba(10,25,45,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.18);
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; }
-.nav-logo img { height: 48px; width: auto; object-fit: contain; }
-.nav-links { display: flex; gap: 1.8rem; align-items: center; }
-.nav-links a { font-size: 0.82rem; font-weight: 400; color: var(--text-2); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--teal); }
+.nav-logo img {
+  height: 42px; width: auto; object-fit: contain;
+  background: rgba(255,255,255,0.92);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.85); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+.nav-links a:hover { color: #6ee7b7; }
 .nav-social { display: flex; gap: 0.4rem; align-items: center; }
-.soc-btn { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
+.soc-btn { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity 0.2s, transform 0.15s; }
 .soc-btn:hover { opacity: 0.85; transform: translateY(-1px); }
 .soc-btn.fb { background: #1877f2; }
 .soc-btn.ig { background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%); }
-.soc-btn svg { width: 15px; height: 15px; fill: white; }
-.nav-cta { padding: 0.55rem 1.3rem; background: var(--teal); color: var(--white) !important; border-radius: 100px; font-weight: 500; font-size: 0.82rem; white-space: nowrap; transition: background 0.2s, transform 0.2s !important; }
+.soc-btn svg { width: 14px; height: 14px; fill: white; }
+.nav-cta {
+  padding: 0.5rem 1.3rem;
+  background: var(--teal); color: var(--white) !important;
+  border-radius: 100px; font-weight: 500; font-size: 0.8rem;
+  white-space: nowrap; letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.2s !important;
+  border: 1px solid rgba(255,255,255,0.1);
+}
 .nav-cta:hover { background: var(--teal-2) !important; transform: translateY(-1px); }
 
 /* === HERO === */
@@ -74,72 +90,54 @@ nav {
 .hero-bg img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center 30%;
-  opacity: 0.08;
+  opacity: 1;
 }
 .hero-bg::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(110deg, rgba(245,249,248,0.98) 40%, rgba(245,249,248,0.75) 100%);
+  background: linear-gradient(110deg, rgba(10,25,45,0.82) 0%, rgba(10,25,45,0.55) 55%, rgba(10,25,45,0.25) 100%);
 }
-.hero-blob {
-  position: absolute; top: -15%; right: -8%; z-index: 0;
-  width: 52vw; height: 52vw; max-width: 680px; max-height: 680px;
-  background: radial-gradient(ellipse, rgba(42,122,110,0.1) 0%, transparent 70%);
-  border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
-  pointer-events: none;
-}
-.hero-blob-2 {
-  position: absolute; bottom: -8%; left: -5%; z-index: 0;
-  width: 28vw; height: 28vw; max-width: 380px; max-height: 380px;
-  background: radial-gradient(ellipse, rgba(74,170,90,0.12) 0%, transparent 70%);
-  border-radius: 40% 60% 55% 45%;
-  pointer-events: none;
-}
+.hero-blob { display: none; }
+.hero-blob-2 { display: none; }
 .hero-left { position: relative; z-index: 1; }
 .hero-pill {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--white); border: 1px solid var(--sand-2);
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
   border-radius: 100px; padding: 0.38rem 1rem;
-  font-size: 0.74rem; color: var(--text-2); margin-bottom: 1.5rem;
+  font-size: 0.74rem; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;
 }
-.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #6ee7b7; }
 .hero-left h1 {
   font-family: 'Lora', serif;
   font-size: clamp(2.2rem, 3.8vw, 3.6rem);
   font-weight: 400; line-height: 1.18;
-  color: var(--navy); margin-bottom: 1.1rem;
+  color: #ffffff; margin-bottom: 1.1rem;
 }
-.hero-left h1 em { color: var(--teal); font-style: italic; }
-.hero-left p { font-size: 1rem; color: var(--text-2); max-width: 420px; margin-bottom: 2rem; line-height: 1.8; }
-.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.hero-left h1 em { color: #6ee7b7; font-style: italic; }
+.hero-left p { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 420px; margin-bottom: 2rem; line-height: 1.8; }
+.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0; }
 .btn-primary { padding: 0.85rem 2rem; background: var(--teal); color: var(--white); border: none; border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; }
 .btn-primary:hover { background: var(--teal-2); transform: translateY(-2px); }
-.btn-ghost { padding: 0.85rem 2rem; background: transparent; color: var(--navy); border: 1.5px solid var(--sand-2); border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 400; cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s, color 0.2s; }
-.btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
-.hero-banner-img {
-  margin-top: 1rem;
-  border-radius: var(--radius); overflow: hidden;
-  max-width: 440px; border: 1px solid var(--sand-2);
-  box-shadow: 0 4px 20px rgba(26,58,107,0.1);
-}
-.hero-banner-img img { width: 100%; display: block; }
+.btn-ghost { padding: 0.85rem 2rem; background: rgba(255,255,255,0.12); color: #fff; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 400; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, border-color 0.2s; backdrop-filter: blur(4px); }
+.btn-ghost:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.6); }
 .hero-right { position: relative; z-index: 1; }
 .hero-card {
-  background: var(--white); border: 1px solid var(--sand-2);
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-lg); padding: 1.8rem;
-  box-shadow: 0 4px 32px rgba(26,58,107,0.08);
 }
-.hero-card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 1.2rem; }
+.hero-card-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 1.2rem; }
 .qi-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.9rem; }
-.qi-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--teal-lt); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-.qi-icon svg { width: 15px; height: 15px; stroke: var(--teal); fill: none; stroke-width: 2; }
-.qi-text { font-size: 0.82rem; color: var(--text-2); line-height: 1.5; }
-.qi-text strong { color: var(--navy); font-weight: 500; display: block; font-size: 0.86rem; }
-.trust-row { display: flex; align-items: center; gap: 0.8rem; padding: 1rem; background: var(--navy-lt); border-radius: var(--radius); margin-top: 1rem; }
-.trust-icon { width: 34px; height: 34px; background: rgba(26,58,107,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.trust-icon svg { width: 15px; height: 15px; stroke: var(--navy); fill: none; stroke-width: 2; }
-.trust-text { font-size: 0.78rem; color: var(--text-2); line-height: 1.4; }
-.trust-text strong { color: var(--navy); font-weight: 500; display: block; }
+.qi-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.qi-icon svg { width: 15px; height: 15px; stroke: #6ee7b7; fill: none; stroke-width: 2; }
+.qi-text { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+.qi-text strong { color: #ffffff; font-weight: 500; display: block; font-size: 0.86rem; }
+.trust-row { display: flex; align-items: center; gap: 0.8rem; padding: 1rem; background: rgba(110,231,183,0.12); border-radius: var(--radius); margin-top: 1rem; border: 1px solid rgba(110,231,183,0.2); }
+.trust-icon { width: 34px; height: 34px; background: rgba(110,231,183,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.trust-icon svg { width: 15px; height: 15px; stroke: #6ee7b7; fill: none; stroke-width: 2; }
+.trust-text { font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.4; }
+.trust-text strong { color: #ffffff; font-weight: 500; display: block; }
 
 /* === SECTION BASE === */
 section { padding: 5rem 2.5rem; }
@@ -199,6 +197,15 @@ section { padding: 5rem 2.5rem; }
 .value-row p { font-size: 0.83rem; color: var(--text-2); }
 .value-row strong { color: var(--navy); font-weight: 500; display: block; font-size: 0.86rem; }
 
+.booking-notice {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  background: var(--navy-lt); border: 1px solid rgba(26,58,107,0.15);
+  border-radius: var(--radius); padding: 0.9rem 1rem;
+  font-size: 0.82rem; color: var(--navy); line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.booking-notice svg { flex-shrink: 0; margin-top: 1px; stroke: var(--navy); }
+.booking-notice strong { font-weight: 600; }
 /* === MYDR BUTTON === */
 .btn-mydr-pp {
   padding: 0.9rem 2.5rem;
@@ -292,7 +299,8 @@ footer {
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 1rem;
 }
-.footer-logo img { height: 36px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.8; }
+.footer-logo img { height: 36px; width: auto; object-fit: contain; background: rgba(255,255,255,0.12); border-radius: 6px; padding: 3px 8px; }
+.footer-mid { text-align: center; }
 footer p { font-size: 0.76rem; }
 footer nav { display: flex; gap: 1.5rem; }
 footer nav a { font-size: 0.73rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
@@ -329,9 +337,14 @@ footer nav a:hover { color: white; }
 .hero-actions { animation-delay: 0.38s; }
 .hero-banner-img { animation-delay: 0.48s; }
 .hero-right { animation: fadeUp 0.6s 0.45s ease both; }
+/* === EXTRAS === */
+.scroll-progress { position: fixed; top: 0; left: 0; z-index: 200; height: 3px; width: 0%; background: linear-gradient(90deg, var(--teal), #6ee7b7); transition: width 0.1s linear; pointer-events: none; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 <script>
     const mydrScript = document.getElementsByTagName('script')[0];
     const js = document.createElement('script');
@@ -360,7 +373,7 @@ footer nav a:hover { color: white; }
       <a href="https://www.facebook.com/CM7SevenCare" target="_blank" rel="noopener" class="soc-btn fb" title="Facebook">
         <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       </a>
-      <a href="https://www.instagram.com/cm7sevencare" target="_blank" rel="noopener" class="soc-btn ig" title="Instagram">
+      <a href="https://www.instagram.com/cm7sevencare" class="soc-btn ig" title="Instagram — wkrótce" style="cursor:default;opacity:0.6;" onclick="return false;">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
     </div>
@@ -383,9 +396,6 @@ footer nav a:hover { color: white; }
     <div class="hero-actions">
       <a href="tel:787926156" class="btn-primary">Zadzwoń: 787 926 156</a>
       <a href="#specjalizacje" class="btn-ghost">Nasze specjalizacje</a>
-    </div>
-    <div class="hero-banner-img">
-      <img src="banner.jpg" alt="CM7 Centrum Medyczne SevenCare Rawa Mazowiecka">
     </div>
   </div>
 
@@ -413,7 +423,7 @@ footer nav a:hover { color: white; }
 </section>
 
 <!-- SPECJALIZACJE -->
-<section id="specjalizacje">
+<section id="specjalizacje" class="reveal">
   <div class="spec-photo-strip">
     <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=1400&auto=format&fit=crop&q=80" alt="Specjaliści CM7 SevenCare" loading="lazy">
     <div class="strip-text">
@@ -423,7 +433,7 @@ footer nav a:hover { color: white; }
   </div>
   <div class="spec-header">
     <div class="section-tag">Specjalizacje</div>
-    <p class="section-sub" style="margin-top:0.5rem;">Kompleksowa opieka bez skierowania — umów wizytę telefonicznie pod nr <strong style="color:var(--navy);">787 926 156</strong>.</p>
+    <p class="section-sub" style="margin-top:0.5rem;">Kompleksowa opieka bez skierowania — wizyty prywatne, krótkie terminy.</p>
   </div>
   <div class="spec-grid">
 
@@ -478,7 +488,7 @@ footer nav a:hover { color: white; }
 </section>
 
 <!-- O NAS -->
-<section id="o-nas">
+<section id="o-nas" class="reveal">
   <div class="about-grid">
     <div class="about-img">
       <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&auto=format&fit=crop&q=80" alt="Lekarz CM7 SevenCare" loading="lazy">
@@ -511,21 +521,25 @@ footer nav a:hover { color: white; }
 </section>
 
 <!-- REZERWACJA -->
-<section id="rezerwacja">
+<section id="rezerwacja" class="reveal">
   <div class="booking-center">
     <div class="section-tag">Rezerwacja online</div>
     <h2 class="section-title" style="text-align:center;">Umów wizytę online</h2>
-    <p class="section-sub">Zarezerwuj wizytę online 24/7 — szybko, wygodnie, bez dzwonienia.</p>
+    <p class="section-sub" style="margin:0 auto;">Przyjmujemy wyłącznie po wcześniejszym umówieniu — zarezerwuj termin online lub telefonicznie.</p>
     <div class="booking-card">
       <div class="booking-top">
         <h3>Rezerwacja online</h3>
         <span class="booking-soon" style="background:rgba(74,170,90,0.25);color:#a8f0b0;">Dostępna</span>
       </div>
       <div class="booking-body">
+        <div class="booking-notice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Wizyta odbywa się <strong>wyłącznie po wcześniejszym umówieniu</strong>. Na obecną chwilę nie przyjmujemy pacjentów bez wcześniejszej rejestracji.</span>
+        </div>
         <div class="booking-steps">
           <div class="b-step"><div class="b-step-n">01</div><div class="b-step-l">Wybierz specjalistę</div></div>
           <div class="b-step"><div class="b-step-n">02</div><div class="b-step-l">Wybierz wolny termin</div></div>
-          <div class="b-step"><div class="b-step-n">03</div><div class="b-step-l">Potwierdź wizytę</div></div>
+          <div class="b-step"><div class="b-step-n">03</div><div class="b-step-l">Potwierdź i przyjdź</div></div>
         </div>
         <div style="text-align:center; margin: 1.5rem 0 1rem;">
           <button
@@ -545,7 +559,7 @@ footer nav a:hover { color: white; }
 </section>
 
 <!-- KONTAKT -->
-<section id="kontakt">
+<section id="kontakt" class="reveal">
   <div style="margin-bottom:3rem;">
     <div class="section-tag">Znajdź nas</div>
     <h2 class="section-title">Godziny i lokalizacja</h2>
@@ -573,15 +587,15 @@ footer nav a:hover { color: white; }
       </div>
     </div>
     <div>
-      <!-- Zamień div.map-box na iframe gdy masz embed link z Google Maps:
-      <iframe src="https://maps.google.com/maps?q=Mszczonowska+3+Rawa+Mazowiecka&output=embed"
-        width="100%" style="aspect-ratio:4/3;border:0;border-radius:20px;display:block;" loading="lazy"></iframe>
-      -->
-      <div class="map-box">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <p>ul. Mszczonowska 3<br>96-200 Rawa Mazowiecka</p>
-        <a href="https://maps.google.com/?q=Mszczonowska+3,+96-200+Rawa+Mazowiecka" target="_blank">Otwórz w Google Maps →</a>
-      </div>
+      <iframe
+        src="https://maps.google.com/maps?q=Mszczonowska+3,+96-200+Rawa+Mazowiecka&output=embed&z=16"
+        width="100%"
+        style="aspect-ratio:4/3;border:0;border-radius:var(--radius-lg);display:block;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="CM7 SevenCare - Mszczonowska 3, Rawa Mazowiecka">
+      </iframe>
     </div>
   </div>
 </section>
@@ -594,36 +608,42 @@ footer nav a:hover { color: white; }
       <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       Facebook
     </a>
-    <a href="https://www.instagram.com/cm7sevencare" target="_blank" rel="noopener" class="social-big-btn ig">
+    <span class="social-big-btn ig" style="opacity:0.5;cursor:default;" title="Instagram — wkrótce">
       <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      Instagram
-    </a>
+      Instagram (wkrótce)
+    </span>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo"><img src="logo.jpg" alt="CM7 SevenCare"></div>
-  <p>© 2025 CM7 Centrum Medyczne SevenCare · ul. Mszczonowska 3, 96-200 Rawa Mazowiecka</p>
-  <nav>
-    <a href="#">Polityka prywatności</a>
-    <a href="#">RODO</a>
-  </nav>
+  <div class="footer-mid">
+    <p>© 2025 CM7 Centrum Medyczne SevenCare</p>
+    <p>ul. Mszczonowska 3, 96-200 Rawa Mazowiecka · <a href="tel:787926156" style="color:rgba(255,255,255,0.5);text-decoration:none;">+48 787 926 156</a></p>
+  </div>
+  <div style="font-size:0.72rem;color:rgba(255,255,255,0.25);">Wszelkie prawa zastrzeżone</div>
 </footer>
 
 <script>
-function handleNotify(btn) {
-  const input = btn.previousElementSibling;
-  if (input.value && input.value.includes('@')) {
-    btn.textContent = 'Zapisano ✓';
-    btn.style.background = '#2a7a6e';
-    input.value = ''; input.disabled = true; btn.disabled = true;
-  } else {
-    input.style.borderColor = '#e05a3a';
-    setTimeout(() => input.style.borderColor = '', 1500);
-  }
-}
+// Nav scroll-aware
+const nav = document.querySelector('nav');
+const progress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  // progress bar
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  progress.style.width = pct + '%';
+});
 
+// Section reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Open/closed badge
 const schedule = [
   [2, 14, 0, 16, 30],
   [4,  9,30, 20,  0],
