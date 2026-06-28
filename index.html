@@ -355,9 +355,74 @@ footer nav a:hover { color: white; }
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
+<!-- Google Analytics — ładowane tylko po zgodzie użytkownika -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  function loadGA() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-YZ36LPLR59';
+    document.head.appendChild(s);
+    s.onload = function() {
+      gtag('js', new Date());
+      gtag('config', 'G-YZ36LPLR59');
+    };
+  }
+
+  // Sprawdź zapisaną zgodę
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    loadGA();
+  }
+</script>
+
+<!-- Cookie Banner CSS -->
+<style>
+#cookie-banner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: var(--navy-2); color: rgba(255,255,255,0.88);
+  padding: 1.2rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem; line-height: 1.6;
+}
+#cookie-banner p { max-width: 680px; color: rgba(255,255,255,0.75); }
+#cookie-banner a { color: #6ee7b7; text-decoration: underline; }
+.cookie-btns { display: flex; gap: 0.7rem; flex-shrink: 0; }
+.cookie-btn-accept {
+  padding: 0.55rem 1.4rem; background: var(--teal); color: white;
+  border: none; border-radius: 100px; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 500;
+  transition: background 0.2s;
+}
+.cookie-btn-accept:hover { background: var(--teal-2); }
+.cookie-btn-reject {
+  padding: 0.55rem 1.4rem; background: transparent; color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+.cookie-btn-reject:hover { border-color: rgba(255,255,255,0.5); color: white; }
+</style>
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BANER COOKIE -->
+<div id="cookie-banner" style="display:none;">
+  <p>
+    Używamy plików cookie do analizy ruchu na stronie (Google Analytics). Dane pomagają nam ulepszać serwis.
+    Możesz zaakceptować lub odrzucić cookies analityczne. Więcej informacji w <a href="polityka.html">Polityce prywatności</a>.
+  </p>
+  <div class="cookie-btns">
+    <button class="cookie-btn-reject" onclick="rejectCookies()">Odrzuć</button>
+    <button class="cookie-btn-accept" onclick="acceptCookies()">Akceptuję</button>
+  </div>
+</div>
 <script>
     const mydrScript = document.getElementsByTagName('script')[0];
     const js = document.createElement('script');
@@ -772,7 +837,7 @@ footer nav a:hover { color: white; }
     <p>© 2025 CM7 Centrum Medyczne SevenCare</p>
     <p>ul. Mszczonowska 3, 96-200 Rawa Mazowiecka · <a href="tel:787926156" style="color:rgba(255,255,255,0.5);text-decoration:none;">+48 787 926 156</a></p>
   </div>
-  <div style="font-size:0.72rem;color:rgba(255,255,255,0.25);">Wszelkie prawa zastrzeżone</div>
+  <div style="font-size:0.72rem;color:rgba(255,255,255,0.25);">Wszelkie prawa zastrzeżone · <a href="polityka.html" style="color:rgba(255,255,255,0.35);text-decoration:none;">Polityka prywatności</a></div>
 </footer>
 
 <script>
@@ -793,7 +858,21 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Open/closed badge
+// Cookie consent
+function acceptCookies() {
+  localStorage.setItem('cookie_consent', 'accepted');
+  document.getElementById('cookie-banner').style.display = 'none';
+  loadGA();
+}
+function rejectCookies() {
+  localStorage.setItem('cookie_consent', 'rejected');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+if (!localStorage.getItem('cookie_consent')) {
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  });
+}
 
 </script>
 </body>
