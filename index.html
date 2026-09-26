@@ -177,6 +177,49 @@ section { padding: 5rem 2.5rem; }
 .spec-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
 .spec-tag { font-size: 0.68rem; background: var(--navy-lt); color: var(--navy); padding: 3px 10px; border-radius: 100px; font-weight: 400; }
 
+/* === USG === */
+#usg { background: var(--white); }
+.usg-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+.usg-photo { border-radius: var(--radius-lg); overflow: hidden; position: relative; }
+.usg-photo img { width: 100%; display: block; border-radius: var(--radius-lg); }
+.usg-photo-badge {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: var(--white); border-radius: var(--radius);
+  padding: 0.8rem 1.2rem; box-shadow: 0 4px 16px rgba(26,58,107,0.12);
+  font-size: 0.8rem; color: var(--navy); font-weight: 500;
+}
+.usg-photo-badge span { display: block; font-size: 0.68rem; color: var(--text-3); font-weight: 300; margin-top: 0.1rem; }
+.usg-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.usg-category { margin-bottom: 1rem; }
+.usg-cat-title {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--teal); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.usg-cat-title::before { content: ''; display: block; width: 16px; height: 1px; background: var(--teal); }
+.usg-item {
+  display: flex; align-items: flex-start; gap: 0.8rem;
+  background: var(--bg); border: 1px solid var(--sand-2);
+  border-radius: var(--radius); padding: 0.8rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.usg-item:hover { border-color: rgba(42,122,110,0.3); box-shadow: 0 2px 12px rgba(26,58,107,0.06); }
+.usg-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.usg-item-body { }
+.usg-item-name { font-size: 0.87rem; font-weight: 500; color: var(--navy); margin-bottom: 0.15rem; }
+.usg-item-desc { font-size: 0.78rem; color: var(--text-2); line-height: 1.5; }
+.usg-price {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--teal-lt); color: var(--teal-2);
+  font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 100px;
+  margin-top: 0.3rem;
+}
+.usg-notice {
+  background: var(--navy-lt); border: 1px solid rgba(26,58,107,0.12);
+  border-radius: var(--radius); padding: 1rem 1.2rem; margin-top: 1.5rem;
+  font-size: 0.83rem; color: var(--navy); line-height: 1.6;
+}
+.usg-notice strong { font-weight: 600; }
+
 /* === ZESPÓŁ === */
 #zespol { background: var(--bg-2); }
 .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
@@ -445,6 +488,7 @@ footer nav a:hover { color: white; }
   </a>
   <div class="nav-links">
     <a href="#specjalizacje">Specjalizacje</a>
+    <a href="#usg">USG</a>
     <a href="#zespol">Zespół</a>
     <a href="#o-nas">O nas</a>
     <a href="#kontakt">Kontakt</a>
@@ -588,6 +632,120 @@ footer nav a:hover { color: white; }
         <span class="spec-tag">Żylaki</span>
         <span class="spec-tag">Zmiany skórne</span>
         <span class="spec-tag">Stopa cukrzycowa</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USG -->
+<section id="usg" class="reveal">
+  <div class="section-tag">Diagnostyka</div>
+  <h2 class="section-title">Badania USG</h2>
+  <p class="section-sub">Nowoczesny aparat USG Samsung na miejscu — szybka, bezpieczna i bezbolesna diagnostyka bez czekania na skierowanie.</p>
+
+  <div class="usg-layout">
+
+    <!-- ZDJĘCIE APARATU -->
+    <div class="usg-photo">
+      <img src="usg.jpg" alt="Aparat USG Samsung CM7 SevenCare" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div style="display:none;background:var(--sand);border-radius:var(--radius-lg);aspect-ratio:4/3;align-items:center;justify-content:center;flex-direction:column;gap:0.8rem;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7a9aaa" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span style="font-size:0.78rem;color:var(--text-3);">Wgraj usg.jpg na GitHub</span>
+      </div>
+      <div class="usg-photo-badge">
+        Aparat USG Samsung
+        <span>Nowoczesna diagnostyka obrazowa</span>
+      </div>
+    </div>
+
+    <!-- LISTA USG -->
+    <div>
+      <div class="usg-category">
+        <div class="usg-cat-title">Jama brzuszna i narządy</div>
+        <div class="usg-list">
+          <div class="usg-item">
+            <span class="usg-icon">🫁</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG jamy brzusznej</div>
+              <div class="usg-item-desc">Wątroba, trzustka, nerki, pęcherzyk żółciowy i inne narządy</div>
+            </div>
+          </div>
+          <div class="usg-item">
+            <span class="usg-icon">🦋</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG tarczycy</div>
+              <div class="usg-item-desc">Ocena struktury tarczycy i węzłów chłonnych</div>
+            </div>
+          </div>
+          <div class="usg-item">
+            <span class="usg-icon">🩺</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG piersi</div>
+              <div class="usg-item-desc">Profilaktyka i diagnostyka zmian w piersiach</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="usg-category">
+        <div class="usg-cat-title">Naczynia i serce</div>
+        <div class="usg-list">
+          <div class="usg-item">
+            <span class="usg-icon">🧠</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG Doppler tętnic szyjnych</div>
+              <div class="usg-item-desc">Wykrywa miażdżycę i zwężenia naczyń — może uratować życie. Wskazany przy nadciśnieniu, cukrzycy, po TIA lub udarze.</div>
+            </div>
+          </div>
+          <div class="usg-item">
+            <span class="usg-icon">🦵</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG naczyń kończyn dolnych</div>
+              <div class="usg-item-desc">Diagnostyka żylaków, zakrzepicy i innych zmian naczyniowych</div>
+            </div>
+          </div>
+          <div class="usg-item">
+            <span class="usg-icon">💫</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG naczyń domózgowych</div>
+              <div class="usg-item-desc">Ocena przepływów krwi do mózgu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="usg-category">
+        <div class="usg-cat-title">Stawy i dzieci</div>
+        <div class="usg-list">
+          <div class="usg-item">
+            <span class="usg-icon">🦴</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG stawów</div>
+              <div class="usg-item-desc">Kolana, barki, biodra — ocena struktur stawowych, ścięgien i więzadeł</div>
+            </div>
+          </div>
+          <div class="usg-item">
+            <span class="usg-icon">👶</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG stawów biodrowych niemowląt (DDH)</div>
+              <div class="usg-item-desc">Wczesne wykrycie dysplazji stawów biodrowych — rutynowo 6–12 tydzień życia</div>
+
+            </div>
+          </div>
+          <div class="usg-item">
+            <span class="usg-icon">🧒</span>
+            <div class="usg-item-body">
+              <div class="usg-item-name">USG przezczaszkowe dzieci</div>
+              <div class="usg-item-desc">Bezpieczne, nieinwazyjne badanie dla najmłodszych pacjentów</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="usg-notice">
+        <strong>Rejestracja:</strong> <a href="tel:787926156" style="color:var(--teal);font-weight:600;">787 926 156</a> lub online na <a href="https://sevencare.pl" style="color:var(--teal);font-weight:600;">sevencare.pl</a><br>
+        Badania dostępne po wcześniejszym umówieniu — <strong>krótkie terminy, doświadczony specjalista radiolog.</strong>
       </div>
     </div>
 
